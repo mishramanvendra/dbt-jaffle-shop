@@ -37,4 +37,4 @@ models:
 
 seeds:
   jaffle_shop:
-    +schema: raw
+    +schema: raw`
