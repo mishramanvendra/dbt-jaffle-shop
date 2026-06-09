@@ -1,15 +1,25 @@
-Welcome to your new dbt project!
+# dbt Jaffle Shop — Analytics Engineering Portfolio Project
 
-### Using the starter project
+A layered dbt project built on Snowflake demonstrating analytics engineering best practices.
 
-Try running the following commands:
-- dbt run
-- dbt test
+## Stack
+- dbt Core 1.11
+- Snowflake (free trial)
+- SQL
 
+## Project Structure
 
-### Resources:
-- Learn more about dbt [in the docs](https://docs.getdbt.com/docs/introduction)
-- Check out [Discourse](https://discourse.getdbt.com/) for commonly asked questions and answers
-- Join the [chat](https://community.getdbt.com/) on Slack for live discussions and support
-- Find [dbt events](https://events.getdbt.com) near you
-- Check out [the blog](https://blog.getdbt.com/) for the latest news on dbt's development and best practices
+- **Staging layer** — cleans and renames raw source tables (customers, orders, payments)
+- **Mart layer** — joins and aggregates into business-facing datasets including customer lifetime value, order history and payment totals
+- **Tests** — column-level uniqueness, not-null and accepted-values tests across all staging models
+- **Documentation** — full data lineage and column descriptions generated via dbt docs
+
+## How to run
+
+1. Clone the repo
+2. Install dbt: `pip install dbt-snowflake`
+3. Configure your `~/.dbt/profiles.yml` with Snowflake credentials
+4. `dbt seed` — load raw data
+5. `dbt run` — build all models
+6. `dbt test` — run data quality tests
+7. `dbt docs generate && dbt docs serve` — view lineage and documentation
